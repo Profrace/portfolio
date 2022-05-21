@@ -16,3 +16,29 @@ const counters = document.querySelectorAll('.skills__ratings-counter'),
 counters.forEach( (item, i) => {
     lines[i].style.width = item.innerHTML;
 });
+
+$(document).ready(function(){
+    $(".promo__btns").on("click","a", function (event) {
+        event.preventDefault();
+        var id  = $(this).attr('href'),
+            top = $(id).offset().top;
+        $('body,html').animate({scrollTop: top}, 1500);
+    });
+});
+
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 700) {
+        $('.pageup').fadeIn();
+    } else {
+        $('.pageup').fadeOut();
+    }
+});
+
+$("a[href=#up]").click(function() {
+    const _href = $(this).attr("href");
+    $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+    return false;
+});
+
+// new WOW().init();
+// });
